@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SIRKEL DIMAS ABU VULKANIK</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(#87ceeb, #ffd27f);
+            text-align: center;
+            color: #222;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: auto;
+            padding: 25px 15px;
+        }
+
+        h1 {
+            color: white;
+            text-shadow: 2px 2px 4px #555;
+        }
+
+        .box {
+            background: rgba(255,255,255,0.9);
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        input {
+            width: 90%;
+            padding: 12px;
+            border: 2px solid #555;
+            border-radius: 10px;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            background: #ff5722;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #e64a19;
+        }
+
+        #hasil {
+            margin-top: 20px;
+        }
+
+        #hasil img {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 20px;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+        }
+
+        .info {
+            margin-top: 15px;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        /* AREA GUNUNG */
+        .gunung {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 180px;
+            z-index: -1;
+        }
+
+        .mountain1 {
+            position: absolute;
+            bottom: 0;
+            left: 5%;
+            width: 0;
+            height: 0;
+
+            border-left: 160px solid transparent;
+            border-right: 160px solid transparent;
+            border-bottom: 180px solid #4b4b4b;
+        }
+
+        .mountain2 {
+            position: absolute;
+            bottom: 0;
+            right: 5%;
+            width: 0;
+            height: 0;
+
+            border-left: 180px solid transparent;
+            border-right: 180px solid transparent;
+            border-bottom: 210px solid #3b3b3b;
+        }
+
+        /* API LURUS */
+        .api {
+            position: absolute;
+
+            /* dibuat tepat di tengah gunung */
+            left: 50%;
+            bottom: 155px;
+
+            transform: translateX(-50%);
+
+            font-size: 45px;
+
+            /* tidak miring */
+            writing-mode: horizontal-tb;
+
+            animation: naikTurun 1s infinite alternate;
+        }
+
+        /* ASH / ABU VULKANIK */
+        .abu {
+            position: absolute;
+            left: 50%;
+            bottom: 200px;
+
+            transform: translateX(-50%);
+
+            font-size: 25px;
+            letter-spacing: 5px;
+
+            animation: asap 2s infinite alternate;
+        }
+
+        @keyframes naikTurun {
+            from {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            to {
+                transform: translateX(-50%) translateY(-8px);
+            }
+        }
+
+        @keyframes asap {
+            from {
+                transform: translateX(-50%) translateY(0);
+                opacity: 1;
+            }
+
+            to {
+                transform: translateX(-50%) translateY(-15px);
+                opacity: 0.5;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- GUNUNG -->
+    <div class="gunung">
+
+        <div class="mountain1"></div>
+        <div class="mountain2"></div>
+
+        <!-- API LURUS -->
+        <div class="api">🔥</div>
+
+        <!-- ABU -->
+        <div class="abu">☁️ ☁️</div>
+
+    </div>
+
+
+    <div class="container">
+
+        <h1>🌋 SIRKEL DIMAS ABU VULKANIK 🌋</h1>
+
+        <div class="box">
+
+            <h2>👋 Selamat Datang!</h2>
+
+            <p><b>Mau lihat identitas siapa?</b></p>
+
+            <p>Ketik nama anggota:</p>
+
+            <input
+                type="text"
+                id="nama"
+                placeholder="Contoh: Alfa"
+            >
+
+            <br>
+
+            <button onclick="cariNama()">🔍 Cari</button>
+
+            <div id="hasil"></div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        function cariNama() {
+
+            let nama = document
+                .getElementById("nama")
+                .value
+                .toLowerCase()
+                .trim();
+
+            let hasil = document.getElementById("hasil");
+
+            let anggota = {
+
+                "alfa": {
+                    foto: "alfa.jpg",
+                    nama: "Alfa",
+                    kelas: "VIII A",
+                    absen: "23"
+                },
+
+                "dimas": {
+                    foto: "dimas.jpg",
+                    nama: "Dimas",
+                    kelas: "VIII A",
+                    absen: "6"
+                },
+
+                "azzam": {
+                    foto: "Azzam.jpg",
+                    nama: "Azzam",
+                    kelas: "VIII A",
+                    absen: "11"
+                },
+
+                "zaskya": {
+                    foto: "Zaskya.jpg",
+                    nama: "Zaskya",
+                    kelas: "VIII A",
+                    absen: "26"
+                },
+
+                "fifi": {
+                    foto: "Fifi.jpg",
+                    nama: "Fifi",
+                    kelas: "VIII A",
+                    absen: "10"
+                },
+
+                "kayla": {
+                    foto: "Kayla.jpg",
+                    nama: "Kayla",
+                    kelas: "VIII A",
+                    absen: "13"
+                },
+
+                "kirana": {
+                    foto: "Kirana.jpg",
+                    nama: "Kirana",
+                    kelas: "VIII A",
+                    absen: "15"
+                }
+
+            };
+
+
+            if (anggota[nama]) {
+
+                let orang = anggota[nama];
+
+                hasil.innerHTML = `
+
+                    <h2>📸 Identitas</h2>
+
+                    <img
+                        src="${orang.foto}"
+                        alt="${orang.nama}"
+                    >
+
+                    <div class="info">
+
+                        <b>Nama:</b> ${orang.nama}<br>
+
+                        <b>Kelas:</b> ${orang.kelas}<br>
+
+                        <b>Absen:</b> ${orang.absen}
+
+                    </div>
+                `;
+
+            } else {
+
+                hasil.innerHTML = `
+
+                    <p style="color:red;">
+                        ❌ Nama tidak ditemukan!
+                    </p>
+
+                    <p>
+                        Coba ketik:
+                        Alfa, Dimas, Azzam,
+                        Zaskya, Fifi, Kayla, atau Kirana.
+                    </p>
+
+                `;
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>
